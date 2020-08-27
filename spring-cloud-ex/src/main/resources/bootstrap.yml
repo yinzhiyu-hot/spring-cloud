@@ -2,6 +2,7 @@
 #使用spring cloud config做分布式配置中心时，使用客户端读取配置中心配置报了这样一段错：
 #c.c.c.ConfigServicePropertySourceLocator: Fetching config from server at: http://localhost:8888 ，服务还是去 默认端口8888取配置中心的文件
 #将配置文件application.yml改为bootstrap.yml文件即可:
+
 server:
   port: 8089
 
@@ -13,6 +14,7 @@ management:
     web:
       exposure:
         include: "*"
+
 
 spring:
   profiles:
@@ -51,6 +53,7 @@ spring:
       uri: http://localhost:8088
       label: master
       profile: pro
+
 
 
 
