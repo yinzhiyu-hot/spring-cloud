@@ -1,0 +1,24 @@
+spring:
+  security:
+    user:
+      name: admin  # 用户名
+      password: admin   # 密码
+
+eureka:
+  client:
+    service-url:
+      #指定服务注册中心地址，类型为 HashMap，并设置有一组默认值，
+      #默认的Key为 defaultZone；默认的Value为 http://localhost:8761/eureka ，
+      #如果服务注册中心为高可用集群时，多个注册中心地址以逗号分隔。
+      defaultZone: http://admin:admin@localhost:8087/eureka/
+
+    #是否将自己注册到Eureka-Server中，默认的为true
+    register-with-eureka: false
+
+    #是否冲Eureka-Server中获取服务注册信息，默认为true
+    fetch-registry: false
+
+  server:
+    enableSelfPreservation: false
+    evictionIntervalTimerInMs: 4000
+

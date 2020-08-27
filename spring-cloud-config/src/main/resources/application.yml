@@ -1,0 +1,14 @@
+server:
+  port: 8088
+
+spring:
+  profiles:
+    active: '@spring.profiles.active@'
+
+  application:
+    name: spring-cloud-config
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false

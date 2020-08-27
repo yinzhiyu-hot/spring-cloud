@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yinzhiyu-hot/spring-cloud-config #配置文件所在仓库 https://github.com/yinzhiyu-hot/spring-cloud-config.git
+          username: yinzhiyu_hot@126.com
+          password: yzy13755116875=
+          default-label: master #配置文件分支
+          search-paths: config  #配置文件所在根目录
+
+eureka:
+  client:
+    serviceUrl:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://yinzhiyu:yinzhiyu@localhost:8087/eureka

@@ -1,0 +1,56 @@
+#ConfigServer里面的配置,默认加载顺序为:加载bootstrap.*里面的配置 --> 链接configserver,加载远程配置 --> 加载application
+#使用spring cloud config做分布式配置中心时，使用客户端读取配置中心配置报了这样一段错：
+#c.c.c.ConfigServicePropertySourceLocator: Fetching config from server at: http://localhost:8888 ，服务还是去 默认端口8888取配置中心的文件
+#将配置文件application.yml改为bootstrap.yml文件即可:
+server:
+  port: 8089
+
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  profiles:
+    active: '@spring.profiles.active@'
+
+  application:
+    name: spring-cloud-ex
+
+---
+spring:
+  profiles: dev
+  application:
+    name: spring-cloud-ex
+  cloud:
+    config:
+      uri: http://localhost:8088
+      label: master
+      profile: dev
+---
+spring:
+  profiles: test
+  application:
+    name: spring-cloud-ex
+  cloud:
+    config:
+      uri: http://localhost:8088
+      label: master
+      profile: test
+---
+spring:
+  profiles: pro
+  application:
+    name: spring-cloud-ex
+  cloud:
+    config:
+      uri: http://localhost:8088
+      label: master
+      profile: pro
+
+
+
