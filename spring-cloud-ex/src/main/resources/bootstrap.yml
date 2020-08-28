@@ -30,9 +30,17 @@ spring:
     name: spring-cloud-ex
   cloud:
     config:
-      uri: http://localhost:8088
+      discovery:
+        service-id: spring-cloud-config
+        enabled: true
       label: master
       profile: dev
+eureka:
+  client:
+    serviceUrl:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://yinzhiyu:yinzhiyu@localhost:8087/eureka
 ---
 spring:
   profiles: test
@@ -40,9 +48,18 @@ spring:
     name: spring-cloud-ex
   cloud:
     config:
-      uri: http://localhost:8088
+      discovery:
+        service-id: spring-cloud-config
+        enabled: true
       label: master
       profile: test
+eureka:
+  client:
+    serviceUrl:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://admin:admin@localhost:8087/eureka
+
 ---
 spring:
   profiles: pro
@@ -50,9 +67,17 @@ spring:
     name: spring-cloud-ex
   cloud:
     config:
-      uri: http://localhost:8088
+      discovery:
+        service-id: spring-cloud-config
+        enabled: true #是开启通过eureka来获取Config Server
       label: master
       profile: pro
+eureka:
+  client:
+    serviceUrl:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://yinzhiyu:yinzhiyu@localhost:8087/eureka
 
 
 

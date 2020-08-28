@@ -28,7 +28,7 @@ public class ProviderController {
      */
     @RequestMapping(value = "/hello")
     public String hello() {
-        return "hello spring cloud!";
+        return "Hello spring cloud!";
     }
 
     /*
